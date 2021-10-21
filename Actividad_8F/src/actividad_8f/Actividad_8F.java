@@ -61,12 +61,12 @@ public static BufferedReader entrada = new BufferedReader(new InputStreamReader(
     do{
         m = 0;
         boolean e = true;
-System.out.println("Selecciona una opción:\n" +
-"1-Mezclar deck\n" +
-"2-Sacar una carta\n" +
-"3-Carta al azar\n" +
-"4-Generar una mano de 5 cartas\n" +
-"0-Salir");
+System.out.println("Selecciona una opción:");
+System.out.println("1-Mezclar deck"); 
+System.out.println("2-Sacar una carta");
+System.out.println("3-Carta al azar" );
+System.out.println("4-Generar una mano de 5 cartas");
+System.out.println("0-Salir");
       Deck llamada = new Deck();
   int opcion = Integer.parseInt(entrada.readLine());
    switch(opcion){
