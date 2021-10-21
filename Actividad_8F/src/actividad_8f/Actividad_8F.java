@@ -53,6 +53,8 @@ public static BufferedReader entrada = new BufferedReader(new InputStreamReader(
             System.out.println("Ha sucedido un error, vuelva intentar");   
         }
    } 
+    
+    //MÉTODO PARA MOSTRAR MENÚ Y SELECCIÓN DE OPCIONES POR PARTE DEL USUARIO
     private static int showMenu(ArrayList deck) throws IOException {
         int m;
     System.out.println("Bienvenido a Poker!" );
