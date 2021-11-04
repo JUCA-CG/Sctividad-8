@@ -16,12 +16,13 @@ import java.util.Iterator;
  */
 public class Actividad_8F {
 public static BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));  
+public static String mensaje =("Gracias por utilizar el programa");
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        try{
-    Card card = new Card();
+    public static void main(String[] args) throws Exception {
+        
+           Card card = new Card();
         int PALOS = card.palo.length;
         int VALORES = card.valor.length;
         int COLORES = card.color.length;
@@ -37,27 +38,51 @@ public static BufferedReader entrada = new BufferedReader(new InputStreamReader(
                 else{
                     color = card.color[1];     
         }
-            deck.add("Palo: "+card.palo[j]+ ", Color: "+color + ", Valor: "+ card.valor[i]); }        }
+            deck.add("Palo: "+card.palo[j]+ ", Color: "+color + ", Valor: "+ card.valor[i]); } 
+        }
+        System.out.println("Bienvenido a Poker!" );
+        boolean s;
+  do{
+      try{
+       int deck1 = showMenu(deck);  
+        s = false;
+        
+    
+        }catch (Exception e){
+            String men = e.getMessage();
+            if(men!="Se han agotado las cartas"){
+                s= true;
+                
+                
+            }
+            else{
+            
+            s = false;}
+            System.out.println(e.getMessage());
+        }
+        
+   }while(s==true); }
 
-             
-        int deck1 = showMenu(deck);
-       /* Iterator<String> nombreIterator = deck.iterator();
+    private static int inicio() throws Exception{
+        
+     
+        /* Iterator<String> nombreIterator = deck.iterator();
         int cont =1;
        while(nombreIterator.hasNext()){
             String elemento = nombreIterator.next();
             System.out.println(cont+".-"+elemento);
            cont++;
         }*/
-     
-        }catch (Exception e){
-            System.out.println("Ha sucedido un error, vuelva intentar");   
-        }
-   } 
+        
+        
+    return 0;
     
+    }
     //MÉTODO PARA MOSTRAR MENÚ Y SELECCIÓN DE OPCIONES POR PARTE DEL USUARIO
-    private static int showMenu(ArrayList deck) throws IOException {
+    private static int showMenu(ArrayList deck) throws IOException,Exception {
         int m;
-    System.out.println("Bienvenido a Poker!" );
+        
+    
     do{
         m = 0;
         boolean e = true;
@@ -69,48 +94,46 @@ System.out.println("4-Generar una mano de 5 cartas");
 System.out.println("0-Salir");
       Deck llamada = new Deck();
   int opcion = Integer.parseInt(entrada.readLine());
+
+  
    switch(opcion){
        case 0:
-           System.out.println("Haz elegido salir\n"+"Gracias por utilizar el programa");
-           
-           return m;
+           System.out.println("Haz elegido salir\n"+mensaje);
+//           return m;
           
-        case 1:
-            System.out.println("Haz elegido mezclar deck");
+        case 1:  
             llamada.shuffle(deck);
            break;
         case 2:
-            System.out.println("Haz elegido sacar una carta");
+
             llamada.head(deck);
            break;
         case 3:
-            System.out.println("Haz elegido una carta al azar");
             llamada.pick(deck);
            break;
            
         case 4:
-            System.out.println("Haz elegido generar una mano de 5 cartas");
             llamada.hand(deck);
            break;
            
-         default: System.out.println("opción no válida, favor de elegir otra opción");
+         default: 
          m = 1;
          e = false;
-             break;
+         throw new Exception("Opción no válida, vuelva a intentarlo");
    
            
    }
    if(e ==true){
-   System.out.println("Presione (1) para volver a elegir una opción del menú o cualquier otro número para salir");
+   System.out.println("Presione (1) para volver a elegir una opción del menú o cualquier otra para salir");
    int o =Integer.parseInt(entrada.readLine());
    if (o==1){
        m=1;
    }}
     }while(m==1);
-    System.out.println("Gracias por utilizar el programa");
+    System.out.println(mensaje);
     return m;
        
         
     }
-}
     
+}
